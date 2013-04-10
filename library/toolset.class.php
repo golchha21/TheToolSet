@@ -224,7 +224,8 @@
 			if( $this->isValidURL( $url ) ) {
 				extract( parse_url( $url ) );
 				$content = $this->get_data( $url );
-				$file = "$host.html";
+				$md5 = md5($host);
+				$file = "$md5.html";
 				$handle = fopen( $file, 'w' );
 				fwrite( $handle, $content['data'] );
 				fclose( $handle );
