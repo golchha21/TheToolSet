@@ -1,9 +1,9 @@
-# [TheToolSet](https://github.com/golchha21/TheToolSet)
+# [TheToolSet](http://goo.gl/Wns2I)
 
 The perfect webmaster's toolkit.
 
 ## Demonstration
-* [TheToolSet](http://goo.gl/Wns2I)
+* [TheToolSet](http://goo.gl/w06NP)
 
 ## Features
 
