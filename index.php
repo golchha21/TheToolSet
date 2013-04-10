@@ -51,8 +51,33 @@
 				</div>
 				<div class="row">
 					<div class="span12">
+						<div class="page-header">
+							<h3>Metatag information for <?php echo $args['data']['url']; ?>:</h3>
+						</div>
 						<?php $tts->print_r_pre( $tts->get_meta() ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span12">
+						<div class="page-header">
+							<h3>Header information for <?php echo $args['data']['url']; ?>:</h3>
+						</div>
 						<?php $tts->print_r_pre( $tts->get_headers() ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span12">
+						<div class="page-header">
+							<h3>Header[Curl] information for <?php echo $args['data']['url']; ?>:</h3>
+						</div>
+						<?php $tts->print_r_pre( $tts->get_headers(true) ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span12">
+						<div class="page-header">
+							<h3>Whois information for <?php echo $args['data']['url']; ?>:</h3>
+						</div>
 						<?php $tts->print_r_pre( $tts->get_whois() ); ?>
 					</div>
 				</div>
