@@ -311,7 +311,7 @@
 					$return = "Error: No appropriate Whois server found for $domain domain!";
 				}
 			}
-			return htmlspecialchars( $return );
+			return htmlspecialchars( $return, ENT_QUOTES );
 		}
 	}
 ?>
