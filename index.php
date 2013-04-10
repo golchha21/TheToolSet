@@ -1,6 +1,6 @@
 <?php
 	require_once( 'library/toolset.class.php' );
-	$args['data']['url'] = 'http://www.ulhas.net/'; 
+	$args['data']['url'] = 'http://www.jbsaree.com/'; 
 	$tts = new THETOOLSET($args);
 ?>
 <!DOCTYPE html>
@@ -10,8 +10,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title><?php echo _CODENAME; ?> v <?php echo _VERSION; ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="keywords" content="<?php echo _CODENAME; ?>, GitHub Project, Ulhas Vardhan Golchha">
-		<meta name="description" content="">
+		<meta name="keywords" content="<?php echo _CODENAME; ?>, Webmaster, ToolKit, GitHub Project, Ulhas Vardhan Golchha">
+		<meta name="description" content="The perfect webmaster's toolkit.">
 		<meta name="author" content="Ulhas Vardhan Golchha">
 		<link href="https://plus.google.com/100459034318170995980/" rel="publisher">
 		<meta property="fb:admins" content="619145803">
@@ -51,9 +51,9 @@
 				</div>
 				<div class="row">
 					<div class="span12">
-						<?php //$tts->print_r_pre( $tts->get_meta() ); ?>
-						<?php //$tts->print_r_pre( $tts->get_headers() ); ?>
-						<?php //$tts->print_r_pre( $tts->get_whois() ); ?>
+						<?php $tts->print_r_pre( $tts->get_meta() ); ?>
+						<?php $tts->print_r_pre( $tts->get_headers() ); ?>
+						<?php $tts->print_r_pre( $tts->get_whois() ); ?>
 					</div>
 				</div>
 			</section>
