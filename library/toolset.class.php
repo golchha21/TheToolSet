@@ -287,7 +287,7 @@
 			return $return;
 		}
 		
-		function get_whois ( ) {
+		function get_whois ( $nl2br = false ) {
 			$return = false;
 			$url = $this->data['url'];
 			if( $this->isValidURL( $url ) ) {
@@ -311,7 +311,11 @@
 					$return = "Error: No appropriate Whois server found for $domain domain!";
 				}
 			}
-			return htmlspecialchars( $return, ENT_QUOTES );
+			if( $nl2br ) {
+				return nl2br( htmlspecialchars( $return, ENT_QUOTES ) );
+			} else {
+				return htmlspecialchars( $return, ENT_QUOTES );
+			}
 		}
 	}
 ?>
