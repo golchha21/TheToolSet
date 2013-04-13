@@ -168,6 +168,7 @@
 			'vg' 		=> 'whois.adamsnames.tc',
 			'wf' 		=> 'whois.nic.wf',
 			'ws' 		=> 'whois.website.ws',
+			'xxx' 		=> 'whois.nic.xxx',
 			'yt' 		=> 'whois.nic.yt',
 			'yu' 		=> 'whois.ripe.net'
 		);
