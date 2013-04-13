@@ -1,14 +1,18 @@
 <?php
 	define( '_CODENAME', 'TheToolSet'); 
-	define( '_VERSION', '1.0.0'); 
+	define( '_VERSION', '1.0.1'); 
 	define( '_URL', 'https://github.com/golchha21/TheToolSet'); 
 	
 	class THETOOLSET {
 		
-		var $timeout 	= 5;
-		var $useragent 	= 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13';
-		var $data		= array();
-		var $servers 	= array(
+		// CURL timeout
+		private $timeout 	= 5;
+		// CURL Useragent
+		private $useragent 	= 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13';
+		// Data for processing
+		private $data		= array();
+		// WHOIS server list
+		private $servers 	= array(
 			'ac'		=> 'whois.nic.ac',
 			'ae'		=> 'whois.nic.ae',
 			'aero'		=> 'whois.aero',
@@ -172,7 +176,8 @@
 			'yt' 		=> 'whois.nic.yt',
 			'yu' 		=> 'whois.ripe.net'
 		);
-
+		
+		// Constructor
 		function __construct( $args = false ) {
 			extract($args);
 			
@@ -181,6 +186,7 @@
 			$this->data			= $data;
 		}
 		
+		// Gets the content from the URL
 		function get_data( $url ) {
 			$return = false;
 			if ( extension_loaded( 'curl' ) ) {
@@ -205,20 +211,24 @@
 			return $return;
 		}
 		
+		// Return whether the url is valid or not.
 		function isValidURL( $url )	{
 			return filter_var( $url, FILTER_VALIDATE_URL );
 		}
 		
+		// Return whether the email is valid or not.
 		function isValidEMAIL( $email )	{
 			return filter_var( $email, FILTER_VALIDATE_EMAIL );
 		}
 		
+		// Prints the content supplied with <pre> tags
 		function print_r_pre( $data ) {
 			echo '<pre class="prettyprint linenums">';
 			print_r( $data );
 			echo '</pre>';
 		}
 		
+		// Returns the meta tags for the url.
 		function get_meta() {
 			$return = false;
 			$url = $this->data['url'];
@@ -240,6 +250,7 @@
 			return $return;
 		}
 		
+		// Returns the header information for the url.
 		function get_headers( $extended = false ) {
 			$return = false;
 			$url = $this->data['url'];
@@ -258,6 +269,7 @@
 			return $return;
 		}
 		
+		// Returns the DNS information for the domain.
 		function get_dns() {
 			$return = false;
 			$url = $this->data['url'];
@@ -272,6 +284,7 @@
 			return $return;
 		}
 		
+		// Returns the mail exchange information for the domain.
 		function get_mx() {
 			$return = false;
 			$url = $this->data['url'];
@@ -288,6 +301,7 @@
 			return $return;
 		}
 		
+		// Returns the whois information for the domain.
 		function get_whois ( $nl2br = false ) {
 			$return = false;
 			$url = $this->data['url'];
