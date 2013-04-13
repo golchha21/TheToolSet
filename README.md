@@ -6,7 +6,11 @@ The perfect webmaster's toolkit.
 * [TheToolSet](http://goo.gl/w06NP)
 
 ## Features
-
+* Returns the meta tags for the URL provided.
+* Returns the header information for the URL provided.
+* Returns the DNS information for the domain provided.
+* Returns the Mail Exchange(MX) information for the domain provided.
+* Returns the Whois information for the domain provided.
 
 ## Support
 Use the [GitHub Issue Tracker](http://goo.gl/f0L7n) to ask questions and get support.
