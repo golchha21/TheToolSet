@@ -1,6 +1,6 @@
 <?php
 	define( '_CODENAME', 'TheToolSet'); 
-	define( '_VERSION', '1.0.1'); 
+	define( '_VERSION', '1.0.2'); 
 	define( '_URL', 'https://github.com/golchha21/TheToolSet'); 
 	
 	class THETOOLSET {
