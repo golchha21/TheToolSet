@@ -81,6 +81,22 @@
 						<?php $tts->putPre( $tts->getWhois() ); ?>
 					</div>
 				</div>
+				<div class="row">
+					<div class="span12">
+						<div class="page-header">
+							<h3>DNS information for <?php echo $args['data']['url']; ?>:</h3>
+						</div>
+						<?php $tts->putPre( $tts->getDNS() ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span12">
+						<div class="page-header">
+							<h3>MX information for <?php echo $args['data']['url']; ?>:</h3>
+						</div>
+						<?php $tts->putPre( $tts->getMX() ); ?>
+					</div>
+				</div>
 			</section>
 
 			<footer class="footer">
