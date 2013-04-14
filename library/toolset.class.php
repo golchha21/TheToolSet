@@ -187,7 +187,7 @@
 		}
 		
 		// Gets the content from the URL
-		function get_data( $url ) {
+		function getDataFromUrl( $url ) {
 			$return = false;
 			if ( extension_loaded( 'curl' ) ) {
 				$ch = curl_init();
@@ -222,19 +222,19 @@
 		}
 		
 		// Prints the content supplied with <pre> tags
-		function print_r_pre( $data ) {
+		function putPre( $data ) {
 			echo '<pre class="prettyprint linenums">';
 			print_r( $data );
 			echo '</pre>';
 		}
 		
 		// Returns the meta tags for the url.
-		function get_meta() {
+		function getMetaTags() {
 			$return = false;
 			$url = $this->data['url'];
 			if( $this->isValidURL( $url ) ) {
 				extract( parse_url( $url ) );
-				$content = $this->get_data( $url );
+				$content = $this->getDataFromUrl( $url );
 				$md5 = md5($host);
 				$file = "$md5.html";
 				$handle = fopen( $file, 'w' );
@@ -251,13 +251,13 @@
 		}
 		
 		// Returns the header information for the url.
-		function get_headers( $extended = false ) {
+		function getHeaders( $extended = false ) {
 			$return = false;
 			$url = $this->data['url'];
 			if( $this->isValidURL( $url ) ) {
 				$headers = false;
 				if( $extended ){
-					$content = $this->get_data( $url );
+					$content = $this->getDataFromUrl( $url );
 					$headers = $content['header'];
 				} elseif ( ini_get('allow_url_fopen') ) {
 					$headers = get_headers( $url, 1 );
@@ -270,7 +270,7 @@
 		}
 		
 		// Returns the DNS information for the domain.
-		function get_dns() {
+		function getDNS() {
 			$return = false;
 			$url = $this->data['url'];
 			if( $this->isValidURL( $url ) ) {
@@ -285,7 +285,7 @@
 		}
 		
 		// Returns the mail exchange information for the domain.
-		function get_mx() {
+		function getMX() {
 			$return = false;
 			$url = $this->data['url'];
 			if( $this->isValidURL( $url ) ) {
@@ -302,7 +302,7 @@
 		}
 		
 		// Returns the whois information for the domain.
-		function get_whois ( $nl2br = false ) {
+		function getWhois ( $nl2br = false ) {
 			$return = false;
 			$url = $this->data['url'];
 			if( $this->isValidURL( $url ) ) {

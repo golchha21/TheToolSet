@@ -54,7 +54,7 @@
 						<div class="page-header">
 							<h3>Metatag information for <?php echo $args['data']['url']; ?>:</h3>
 						</div>
-						<?php $tts->print_r_pre( $tts->get_meta() ); ?>
+						<?php $tts->putPre( $tts->getMetaTags() ); ?>
 					</div>
 				</div>
 				<div class="row">
@@ -62,7 +62,7 @@
 						<div class="page-header">
 							<h3>Header information for <?php echo $args['data']['url']; ?>:</h3>
 						</div>
-						<?php $tts->print_r_pre( $tts->get_headers() ); ?>
+						<?php $tts->putPre( $tts->getHeaders() ); ?>
 					</div>
 				</div>
 				<div class="row">
@@ -70,7 +70,7 @@
 						<div class="page-header">
 							<h3>Header[Curl] information for <?php echo $args['data']['url']; ?>:</h3>
 						</div>
-						<?php $tts->print_r_pre( $tts->get_headers(true) ); ?>
+						<?php $tts->putPre( $tts->getHeaders(true) ); ?>
 					</div>
 				</div>
 				<div class="row">
@@ -78,7 +78,7 @@
 						<div class="page-header">
 							<h3>Whois information for <?php echo $args['data']['url']; ?>:</h3>
 						</div>
-						<?php $tts->print_r_pre( $tts->get_whois() ); ?>
+						<?php $tts->putPre( $tts->getWhois() ); ?>
 					</div>
 				</div>
 			</section>
