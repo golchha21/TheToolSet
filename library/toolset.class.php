@@ -1,12 +1,14 @@
 <?php
 	define( '_CODENAME', 'TheToolSet'); 
-	define( '_VERSION', '1.0.2'); 
+	define( '_VERSION', '1.0.3'); 
 	define( '_URL', 'https://github.com/golchha21/TheToolSet'); 
 	
 	class THETOOLSET {
 		
 		// CURL timeout
 		private $timeout 	= 5;
+		// CURL max redirects
+		private $redirects 	= 10;
 		// CURL Useragent
 		private $useragent 	= 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13';
 		// Data for processing
@@ -181,6 +183,7 @@
 		function __construct( $args = false ) {
 			extract($args);
 			
+			$this->redirects	= ( isset( $redirects ) && $redirects > $this->redirects ? $redirects : $this->redirects );
 			$this->timeout		= ( isset( $timeout ) && $timeout > $this->timeout ? $timeout : $this->timeout );
 			$this->useragent	= ( isset( $useragent ) && !empty( $useragent ) ? $useragent : $this->useragent );
 			$this->data			= $data;
@@ -195,7 +198,7 @@
 				curl_setopt( $ch, CURLOPT_HEADER, true );
 				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 				curl_setopt( $ch, CURLOPT_AUTOREFERER, true );
-				curl_setopt( $ch, CURLOPT_MAXREDIRS, 10 );
+				curl_setopt( $ch, CURLOPT_MAXREDIRS, $this->redirects );
 				curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->timeout );
 				curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
 				curl_setopt( $ch, CURLOPT_CERTINFO, true );
@@ -235,17 +238,24 @@
 			if( $this->isValidURL( $url ) ) {
 				extract( parse_url( $url ) );
 				$content = $this->getDataFromUrl( $url );
-				$md5 = md5($host);
-				$file = "$md5.html";
-				$handle = fopen( $file, 'w' );
-				fwrite( $handle, $content['data'] );
-				fclose( $handle );
-				$tags = false;
-				$tags = get_meta_tags( "$file" );
-				if ( $tags ) {
-					$return = $tags;
+				$content = $content['data'];
+				if( $content ) {
+					$md5 = md5( $host );
+					$file = "$md5.html";
+					$handle = fopen( $file, 'w' );
+					fwrite( $handle, $content );
+					fclose( $handle );
+					$tags = false;
+					$tags = get_meta_tags( "$file" );
+					if ( $tags ) {
+						$return = $tags;
+					}
+					unlink( $file );
+				} else {
+					$return = "Error: Unable to retrive Meta tag Information!";
 				}
-				unlink( $file );
+			} else {
+				$return = "Error: Invalid URL!";
 			}
 			return $return;
 		}
@@ -255,15 +265,24 @@
 			$return = false;
 			$url = $this->data['url'];
 			if( $this->isValidURL( $url ) ) {
-				$headers = false;
 				if( $extended ){
-					$content = $this->getDataFromUrl( $url );
-					$headers = $content['header'];
-				} elseif ( ini_get('allow_url_fopen') ) {
-					$headers = get_headers( $url, 1 );
-				}
-				if ( $headers ) {
-					$return = $headers;
+					$header = $this->getDataFromUrl( $url, true );
+					$header = $header['header'];
+					if( $header['http_code'] > 0) {
+						$return = $header;
+					} else {
+						$return = "Error: Unable to retrive Header Information!";
+						$return = $header;
+					}
+				} elseif( ini_get( 'allow_url_fopen' ) ) {
+					$header = get_headers( $url, 1 );
+					if( $header ) {
+						$return = $header;
+					} else {
+						$return = "Error: Unable to retrive Header Information!";
+					}
+				} else {
+					$return = "Error: Unable to retrive Header Information!";
 				}
 			}
 			return $return;
@@ -275,10 +294,11 @@
 			$url = $this->data['url'];
 			if( $this->isValidURL( $url ) ) {
 				extract( parse_url( $url ) );
-				$dns = false;
 				$dns = dns_get_record( $host, DNS_ALL );
 				if ( $dns ) {
 					$return = $dns;
+				} else {
+					$return = "Error: Unable to retrive DNS records!";
 				}
 			}
 			return $return;
@@ -291,11 +311,16 @@
 			if( $this->isValidURL( $url ) ) {
 				extract( parse_url( $url ) );
 				$dns = false;
-				getmxrr( $host, $mxhosts, $mxweight );
-				$dns['host'] 	= $mxhosts;
-				$dns['weight']	= $mxweight;
-				if ( $dns ) {
-					$return = $dns;
+				if( getmxrr( $host, $hosts, $weight ) ) {
+					if( count($hosts) > 0 ) {
+						$dns['host'] 	= $hosts;
+						$dns['weight']	= $weight;
+						$return = $dns;
+					} else {
+						$return = "No MX records found!";
+					}
+				} else {
+					$return = "Error: Unable to retrive MX records!";
 				}
 			}
 			return $return;
@@ -313,15 +338,19 @@
 				$tld = strtolower( array_pop( $host_parts ) );
 				if( array_key_exists( $tld, $this->servers ) ) {
 					$server = $this->servers[$tld];
-					$fp = @fsockopen($server, 43, $errno, $errstr, 10);
-					if( $server == "whois.verisign-grs.com" ) {
-						$domain = "=$domain";
+					$fp = @fsockopen( $server, 43, $errno, $errstr, 10 );
+					if( $fp ) {
+						if( $server == "whois.verisign-grs.com" ) {
+							$domain = "=$domain";
+						}
+						fputs( $fp, $domain . "\r\n" );
+						while( !feof( $fp ) ){
+							$return .= fgets($fp);
+						}
+						fclose( $fp );
+					} else {
+						$return = "Error: Whois server inaccessible!";
 					}
-					fputs($fp, $domain . "\r\n");
-					while(!feof($fp)){
-						$return .= fgets($fp);
-					}
-					fclose($fp);
 				} else {
 					$return = "Error: No appropriate Whois server found for $domain domain!";
 				}
