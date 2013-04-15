@@ -1,3 +1,7 @@
+### 1.0.3: April 15th, 2013
+* Better error reporting.
+* Minor bug fixes.
+
 ### 1.0.2: April 14th, 2013
 * Added exmaple for DNS & MX
 * Changed function names
