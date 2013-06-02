@@ -284,6 +284,8 @@
 				} else {
 					$return = "Error: Unable to retrive Header Information!";
 				}
+			} else {
+				$return = "Error: Invalid URL!";
 			}
 			return $return;
 		}
@@ -300,6 +302,8 @@
 				} else {
 					$return = "Error: Unable to retrive DNS records!";
 				}
+			} else {
+				$return = "Error: Invalid URL!";
 			}
 			return $return;
 		}
@@ -322,6 +326,8 @@
 				} else {
 					$return = "Error: Unable to retrive MX records!";
 				}
+			} else {
+				$return = "Error: Invalid URL!";
 			}
 			return $return;
 		}
@@ -354,12 +360,15 @@
 				} else {
 					$return = "Error: No appropriate Whois server found for $domain domain!";
 				}
-			}
-			if( $nl2br ) {
-				return nl2br( htmlspecialchars( $return, ENT_QUOTES ) );
+				if( $nl2br ) {
+					return nl2br( htmlspecialchars( $return, ENT_QUOTES ) );
+				} else {
+					return htmlspecialchars( $return, ENT_QUOTES );
+				}
 			} else {
-				return htmlspecialchars( $return, ENT_QUOTES );
+				$return = "Error: Invalid URL!";
 			}
+			return $return;
 		}
 	}
 ?>
