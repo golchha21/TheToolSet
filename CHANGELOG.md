@@ -1,3 +1,7 @@
+### 1.0.4: June 2nd, 2013
+* Added missing return value for Invalid URL
+* Version increment
+
 ### 1.0.3: April 15th, 2013
 * Better error reporting.
 * Minor bug fixes.
