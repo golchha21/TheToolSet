@@ -1,3 +1,9 @@
+### 1.0.5: July 23rd, 2013
+* Updated README.MD
+* Updated Google Analytics
+* Added Error Reporting directive
+* Updated version
+
 ### 1.0.4: June 2nd, 2013
 * Added missing return value for Invalid URL
 * Version increment
