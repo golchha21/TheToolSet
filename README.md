@@ -3,7 +3,7 @@
 The perfect webmaster's toolkit.
 
 ## Demonstration
-* [TheToolSet](http://goo.gl/w06NP)
+* [TheToolSet](http://goo.gl/VMeQzF)
 
 ## Features
 * Returns the meta tags for the URL provided.
