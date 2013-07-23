@@ -1,7 +1,8 @@
 <?php
 	define( '_CODENAME', 'TheToolSet'); 
-	define( '_VERSION', '1.0.4'); 
-	define( '_URL', 'https://github.com/golchha21/TheToolSet'); 
+	define( '_VERSION', '1.0.5'); 
+	define( '_URL', 'https://github.com/golchha21/TheToolSet');
+	error_reporting(E_ERROR);
 	
 	class THETOOLSET {
 		
@@ -208,7 +209,7 @@
 				$return['data'] 	= curl_exec( $ch );
 				$return['header']	= curl_getinfo( $ch );
 				curl_close( $ch );
-			} elseif ( ini_get('allow_url_fopen') ) {
+			} elseif ( ini_get( 'allow_url_fopen' ) ) {
 				$return = file_get_contents( $url );
 			}
 			return $return;
