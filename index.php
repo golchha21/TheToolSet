@@ -7,21 +7,38 @@
 <html lang="en">
 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title><?php echo _CODENAME; ?> v <?php echo _VERSION; ?></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="keywords" content="<?php echo _CODENAME; ?>, Webmaster, ToolKit, GitHub Project, Ulhas Vardhan Golchha">
 		<meta name="description" content="The perfect webmaster's toolkit.">
 		<meta name="author" content="Ulhas Vardhan Golchha">
+		
 		<link href="https://plus.google.com/100459034318170995980" rel="author">
 		<meta property="fb:admins" content="619145803">
-		<meta property="article:author" content="https://www.facebook.com/golchha21" >
+		<meta property="fb:profile_id" content="619145803">
+		<meta content="mid:35579902" name="linkedin:owner">
+
+		<meta property="og:title" content="<?php echo _CODENAME; ?> v <?php echo _VERSION; ?> - Demo">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="http://www.ulhas.net/GitHub/TheToolSet">
+		<meta property="og:image" content="http://www.ulhas.net/GitHub/TheToolSet/images/chart.png">
+		<meta property="og:description" content="TheToolSet - The perfect webmaster's toolkit.">
+		
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:url" content="http://www.ulhas.net/GitHub/TheToolSet">
+		<meta name="twitter:title" content="TheToolSet">
+		<meta name="twitter:description" content="TheToolSet - The perfect webmaster's toolkit.">
+		<meta name="twitter:image" content="http://www.ulhas.net/GitHub/TheToolSet/images/chart.png">
+		<meta name="twitter:site" content="@golchha21">
+		<meta name="twitter:creator" content="@golchha21">
+		
 		<!--[if lt IE 9]>
 		<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
-		<link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css" />
-		<link rel="stylesheet" href="css/bootstrap-extended.min.css" type="text/css" />	
+		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css">
+		<link rel="stylesheet" href="css/bootstrap-extended.min.css" type="text/css">	
 	</head>
 
 	<body data-spy="scroll">
@@ -121,7 +138,7 @@
 						<div class="page-header">
 							<h4>Credits: </h4>
 						</div>
-						<p>Developed by <a href="http://www.ulhas.net" target="_blank" onclick="_gaq.push(['_trackEvent', '<?php echo _CODENAME; ?> Footer actions', 'Social links', 'Developed by Ulhas Vardhan Golchha']);">Ulhas Vardhan Golchha</a>.<br/>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" onclick="_gaq.push(['_trackEvent', '<?php echo _CODENAME; ?> Footer actions', 'Social links', 'Apache License v2.0']);">Apache License v2.0</a>.</p>
+						<p>Developed by <a href="http://www.ulhas.net" target="_blank" onclick="_gaq.push(['_trackEvent', '<?php echo _CODENAME; ?> Footer actions', 'Social links', 'Developed by Ulhas Vardhan Golchha']);">Ulhas Vardhan Golchha</a>.<br>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" onclick="_gaq.push(['_trackEvent', '<?php echo _CODENAME; ?> Footer actions', 'Social links', 'Apache License v2.0']);">Apache License v2.0</a>.</p>
 					</div>
 					<div class="span3">
 						<div class="page-header">
@@ -138,7 +155,7 @@
 							<h4>Repositories: </h4>
 						</div>
 						<ul>
-							<li><a href="https://github.com/golchha21/PhotoshelterAPI" target="_blank" onclick="_gaq.push(['_trackEvent', '<?php echo _CODENAME; ?> Footer actions', '<?php echo _CODENAME; ?> Footer links', '<?php echo _CODENAME; ?>']);">PhotoshelterAPI</a></li>
+							<li><a href="https://github.com/golchha21/TheToolSet" target="_blank" onclick="_gaq.push(['_trackEvent', '<?php echo _CODENAME; ?> Footer actions', '<?php echo _CODENAME; ?> Footer links', '<?php echo _CODENAME; ?>']);">TheToolSet</a></li>
 							<li><a href="https://github.com/golchha21/<?php echo _CODENAME; ?>" target="_blank" onclick="_gaq.push(['_trackEvent', '<?php echo _CODENAME; ?> Footer actions', '<?php echo _CODENAME; ?> Footer links', '<?php echo _CODENAME; ?>']);"><?php echo _CODENAME; ?></a></li>
 						</ul>
 					</div>
