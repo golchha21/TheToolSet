@@ -1,3 +1,8 @@
+### 1.0.6: December 27rd, 2013
+* Added function getAge()
+* Updated version number
+* Updated README.MD
+
 ### 1.0.5: July 23rd, 2013
 * Updated README.MD
 * Updated Google Analytics
