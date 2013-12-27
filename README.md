@@ -11,6 +11,7 @@ The perfect webmaster's toolkit.
 * Returns the DNS information for the domain provided.
 * Returns the Mail Exchange(MX) information for the domain provided.
 * Returns the Whois information for the domain provided.
+* Calculates the age for the domain provided.
 
 ## Support
 Use the [GitHub Issue Tracker](http://goo.gl/f0L7n) to ask questions and get support.
