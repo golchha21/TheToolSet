@@ -1,4 +1,4 @@
-### 1.0.6: December 27rd, 2013
+### 1.0.6: December 27th, 2013
 * Added function getAge()
 * Updated version number
 * Updated README.MD
