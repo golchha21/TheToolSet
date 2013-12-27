@@ -371,5 +371,44 @@
 			}
 			return $return;
 		}
+		
+		// Returns the whois information for the domain.
+		function getAge () {
+			$whois = $this->getWhois();
+			preg_match('/Creat(.+)/', $whois, $match);
+			$extract = $match[0];
+			$extract = preg_split('/:/', $extract)[1];
+			$extract = preg_split('/ /', $extract);
+			if(empty($extract[0])){
+				$cdate = new DateTime($extract[1]);
+			}else{
+				$cdate = new DateTime($extract[0]);
+			}
+			$today = new DateTime();
+			$age = $today->diff($cdate);
+			if($age->y > 1){
+				$years = $age->y . ' years';
+			} elseif ($age->y == 1){
+				$years = $age->y . ' year';
+			}else{
+				$years = '';
+			}
+			if($age->m > 1){
+				$months = $age->m . ' months';
+			} elseif ($age->m == 1){
+				$months = $age->m . ' month';
+			}else{
+				$months = '';
+			}
+			if($age->d > 1){
+				$days = $age->d . ' days';
+			} elseif ($age->d == 1){
+				$days = $age->d . ' day';
+			}else{
+				$days = '';
+			}
+			$age = trim("$years $months $days");
+			return $age;
+		}
 	}
 ?>
