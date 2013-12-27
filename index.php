@@ -102,6 +102,14 @@
 				<div class="row">
 					<div class="span12">
 						<div class="page-header">
+							<h3>Domain name age for <?php echo $args['data']['url']; ?>:</h3>
+						</div>
+						<?php $tts->putPre( $tts->getAge() ); ?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span12">
+						<div class="page-header">
 							<h3>DNS information for <?php echo $args['data']['url']; ?>:</h3>
 						</div>
 						<?php $tts->putPre( $tts->getDNS() ); ?>
