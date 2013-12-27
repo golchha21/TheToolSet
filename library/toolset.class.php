@@ -377,8 +377,8 @@
 			$whois = $this->getWhois();
 			preg_match('/Creat(.+)/', $whois, $match);
 			$extract = $match[0];
-			$extract = preg_split('/:/', $extract)[1];
-			$extract = preg_split('/ /', $extract);
+			$extract = preg_split('/:/', $extract);
+			$extract = preg_split('/ /', $extract[1]);
 			if(empty($extract[0])){
 				$cdate = new DateTime($extract[1]);
 			}else{
